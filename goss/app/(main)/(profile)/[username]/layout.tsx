@@ -8,8 +8,14 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchProfileData } from '@/app/api/profileData';
 import { ProfileProvider } from '@/app/context/ProfileContext';
 
+interface ProfileLayoutProps {
+  children: React.ReactNode;
+  params: {
+    username: string;
+  };
+}
 // Main ProfileLayout component
-export default function ProfileLayout({ children, params }) {
+export default function ProfileLayout({ children, params }: ProfileLayoutProps) {
   const { username } = params;
 
   // Query for profile data based on the username in the URL
