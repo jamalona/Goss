@@ -1,4 +1,5 @@
-import React from 'react';
+'use client '
+import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
 import FollowButton from '@/app/ui/FollowButton';
 import { useSessionContext } from '@/app/context/SessionContext';
@@ -19,6 +20,15 @@ export default function ProfileHeader() {
   const profile = useProfile();
   const user = profile;
   const otherUserId = user?.user_id;
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (user) {
+      setIsLoading(false); // Update loading status once user data is available
+    }
+  }, [user]);
+
 
   return (
     <>
@@ -85,6 +95,8 @@ export default function ProfileHeader() {
               <FollowButton
                 targetUserId={user.user_id}
                 targetUserName={user.username}
+                isLoading={isLoading}
+
               />
               <MessageButton
                 otherUserId={otherUserId}
