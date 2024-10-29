@@ -72,7 +72,7 @@ export default function Page() {
 
   // Mutation to create a conversation
   const { mutate: createConversationMutation } = useMutation({
-    mutationFn: () => createConversation(loggedInUserId, clickedUser),
+    mutationFn: () => createConversation(loggedInUserId as string, clickedUser),
     onSuccess: (conversationData) => {
       if (conversationData && conversationData.id) {
         router.push(`/chats/${conversationData.id}`);

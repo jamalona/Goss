@@ -19,7 +19,7 @@ export default function ChatInput({ conversationId, loggedInUserId}: ChatMessage
     error: profileError,
   } = useQuery({
     queryKey: ['conversationProfile', loggedInUserId, conversationId],
-    queryFn: () => fetchConversationProfile(loggedInUserId, conversationId),
+    queryFn: () => fetchConversationProfile(loggedInUserId as string, conversationId),
     enabled: !!loggedInUserId && !!conversationId,
   });
 

@@ -118,5 +118,5 @@ export interface Message {
 
 export interface ChatMessagesProps {
   conversationId: string;
-  loggedInUserId: string;
+  loggedInUserId: string |undefined;
 }
