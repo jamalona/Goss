@@ -3,9 +3,6 @@ import Link from 'next/link';
 import FollowButton from '@/app/ui/FollowButton';
 import { useSessionContext } from '@/app/context/SessionContext';
 import MessageButton from '@/app/ui/MessageButton';
-
-import { useQuery } from '@tanstack/react-query';
-import { fetchFollowStatus } from '@/app/api/follow';
 import {
   HiOutlineBookmark,
   HiOutlineEnvelope,

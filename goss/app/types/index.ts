@@ -40,6 +40,19 @@ export interface Post {
   transcription: string;
   comments: Comment[];
   reactions: Reaction[];
+  profiles: {
+    username: string;
+    profile_img: string;
+    badge: string;
+    created_at: Date;
+    updated_at: Date;
+    bio: string;
+    display_name: string;
+    user_id: string;
+    email: string;
+    email_confirmed_at: Date;
+    phone: number;
+  };
 }
 
 export interface Reaction {

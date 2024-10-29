@@ -6,8 +6,15 @@ import { fetchpostData } from '@/app/api/profileData';
 import { useSessionContext } from '@/app/context/SessionContext';
 import { fetchFavourites } from '@/app/api/favourites';
 import { useProfile } from '@/app/context/ProfileContext';
+import { Post } from '@/app/types';
 
-export default function ProfilePost({ params }) {
+interface Props {
+  params: {
+    username: string;
+  };
+}
+
+export default function ProfilePost({ params }:Props) {
   const { username } = params;
   const { data: session } = useSessionContext();
   const currentUserId = session?.user.id;
@@ -26,7 +33,7 @@ export default function ProfilePost({ params }) {
     data: PostData,
     isLoading: isLoadingPost,
     error: postError,
-  } = useQuery({
+  } = useQuery<Post[], Error>({
     queryKey: ['posts', user_id],
     queryFn: () => fetchpostData(user_id),
     enabled: !!user_id, // Only run query if user_id is available
